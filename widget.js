@@ -2208,6 +2208,31 @@ if (!Array.forEach) {
   })();
 })(); // #end application closure
 
+/**
+  * Author: Bernard Chhun (bernard.chhun@gmail.com)
+  *
+  * Example usage:
+
+  TWTR.i18n.init({
+    "join-the-conversation" : "Rejoignez la conversation"
+    , "reply" : "Répondre"
+    , "months" : [
+      "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet"
+      , "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+    ]
+  , "right-now" : "maintenant"
+  , "x-seconds-ago" : "Il y a %s secondes"
+  , "about-1-minute-ago" : "Il y a environ 1 minute"
+    , "x-minutes-ago" : "Il y a %s minutes"
+    , "about-1-hour-ago" : "Il y a environ 1 heure"
+    , "x-hours-ago" : "Il y a environ %s heures"
+    , "yesterday" : "hier"
+    , "x-days-ago" : "Il y a %s jours"
+    , "over-a-year" : "Il y a plus d'un an"
+  });
+
+  new TWTR.widget({..}).render().setUser('twitter_user_name').start();
+  */
 TWTR.i18n = function(){
   return {
     /**

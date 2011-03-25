@@ -11,4 +11,5 @@ Instructions
 1. Download the forked js file named widget.js
 2. Add it in your html/template file
 3. Create your language dictionnary
-4. try it out!
+4. Use the same old TWTR.widget
+5. voilà!
