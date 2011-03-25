@@ -13,3 +13,13 @@ Instructions
 3. Create your language dictionnary
 4. Use the same old TWTR.widget
 5. voilà!
+
+Example usage
+-------------
+
+check out the index.html file
+
+Known bugs
+----------
+
+* minified version doesn't work.
