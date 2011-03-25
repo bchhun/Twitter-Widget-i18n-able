@@ -2233,31 +2233,32 @@ if (!Array.forEach) {
 
   new TWTR.widget({..}).render().setUser('twitter_user_name').start();
   */
-TWTR.i18n = function(){
+TWTR.i18n = (function(){
   return {
+    _i18n : {
+      "join-the-conversation" : "Join the conversation"
+      , "reply" : "Reply"
+      , "months" : [
+        "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet"
+        , "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+      ]
+      , "right-now" : "right now"
+      , "x-seconds-ago" : "%s seconds ago"
+      , "about-1-minute-ago" : "about %s minute ago"
+      , "x-minutes-ago" : "%s minutes ago"
+      , "about-1-hour-ago" : "about %s hour ago"
+      , "x-hours-ago" : "%s hour ago"
+      , "yesterday" : "Yesterday"
+      , "x-days-ago" : "%s days ago"
+      , "over-a-year" : "Over a year"
+    }
     /**
       * @public
       * @return null
       * @param i18n an i18n associative array
       */
-    "init" : function(i18n){
-      this.i18n = i18n || {
-          "join-the-conversation" : "Join the conversation"
-          , "reply" : "Reply"
-          , "months" : [
-            "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet"
-            , "Août", "Septembre", "Octobre", "Novembre", "Décembre"
-          ]
-          , "right-now" : "right now"
-          , "x-seconds-ago" : "%s seconds ago"
-          , "about-1-minute-ago" : "about %s minute ago"
-          , "x-minutes-ago" : "%s minutes ago"
-          , "about-1-hour-ago" : "about %s hour ago"
-          , "x-hours-ago" : "%s hour ago"
-          , "yesterday" : "Yesterday"
-          , "x-days-ago" : "%s days ago"
-          , "over-a-year" : "Over a year"
-      };
+    , "init" : function(i18n){
+      this._i18n = i18n;
     }
     /**
       * @public
@@ -2266,16 +2267,16 @@ TWTR.i18n = function(){
       * @param v the value that will replace the placeholder. reference: http://diveintopython.org/native_data_types/formatting_strings.html
       */
     , "get" : function(k,v){
-      if (this.i18n !== undefined) {
-        if (this.i18n[k] !== undefined && this.i18n[k]) {
+      if (this._i18n !== undefined) {
+        if (this._i18n[k] !== undefined && this._i18n[k]) {
 
           if (v !== undefined) {
-            return this.i18n[k].replace("%s", v);
+            return this._i18n[k].replace("%s", v);
           }
 
-          return this.i18n[k];
-        };  
-      }; 
+          return this._i18n[k];
+        }  
+      } 
     }
-  }
-}();
+  };
+}());
