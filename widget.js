@@ -2,7 +2,7 @@
  * Twitter - http://twitter.com
  * Copyright (C) 2010 Twitter
  * Author: Dustin Diaz (dustin@twitter.com)
- *
+ * 
  * V 2.2.5 Twitter search/profile/faves/list widget
  * http://twitter.com/widgets
  * For full documented source see http://twitter.com/javascripts/widgets/widget.js
