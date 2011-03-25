@@ -1,0 +1,55 @@
+<!DOCTYPE HTML> 
+<html lang="fr-CA"> 
+	<head> 
+		<meta charset="UTF-8"> 
+		
+		<title>Twitter Widget i18n test page!</title> 
+		
+	</head> 
+	<body>
+		<script type="text/javascript" src="widget.js"></script> 
+		<script type="text/javascript">
+			new TWTR.Widget({
+		              version: 2,
+		              type: 'profile',
+		              rpp: 2,
+		              interval: 6000,
+		              width: 202,
+		              height: 310,
+		              theme: {
+		                shell: {
+		                  background: '#939393',
+		                  color: '#ffffff'
+		                },
+		                tweets: {
+		                  background: '#ffffff',
+		                  color: '#474747',
+		                  links: '#ce0d0e'
+		                }
+		              },
+		              features: {
+		                scrollbar: false,
+		                loop: false,
+		                live: false,
+		                hashtags: false,
+		                timestamp: true,
+		                avatars: false,
+		                behavior: 'all'
+		              },
+		              i18n : {
+		              	"join-the-conversation" : "Rejoignez la conversation"
+		              	, "reply" : "Répondre"
+		              	, "months" : [
+		              		"Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet"
+		              		, "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+		              	]
+		              	, "time-ago" : {
+		              		"right-now" : "maintenant"
+		              		, "x-seconds-ago" : "Il y a %s secondes"
+		              		, "about-1-minute-ago" : "Il y a environ 1 minute"
+		              	}
+		              }
+		            }).render().setUser('bernardchhun').start();
+		</script>
+	</body>
+</html>
