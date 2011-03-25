@@ -528,40 +528,39 @@ if (!Array.forEach) {
       }
 
       if (diff < second * 2) {
-        // within 2 seconds
-        return "right now";
+        return TWTR.i18n.get("right-now");
       }
 
       if (diff < minute) {
-        return Math.floor(diff / second) + " seconds ago";
+        return TWTR.i18n.get("x-seconds-ago", Math.floor(diff / second));
       }
 
       if (diff < minute * 2) {
-        return "about 1 minute ago";
+        return TWTR.i18n.get("about-1-minute-ago");
       }
 
       if (diff < hour) {
-        return Math.floor(diff / minute) + " minutes ago";
+        return TWTR.i18n.get("x-minutes-ago", Math.floor(diff / minute));
       }
 
       if (diff < hour * 2) {
-        return "about 1 hour ago";
+        return TWTR.i18n.get("about-1-hour-ago");
       }
 
       if (diff < day) {
-        return  Math.floor(diff / hour) + " hours ago";
+        return TWTR.i18n.get("x-hours-ago", Math.floor(diff / hour));
       }
 
       if (diff > day && diff < day * 2) {
-        return "yesterday";
+        return TWTR.i18n.get("yesterday");
       }
 
       if (diff < day * 365) {
-        return Math.floor(diff / day) + " days ago";
+        return TWTR.i18n.get("x-days-ago", Math.floor(diff / day));
       }
 
       else {
-        return "over a year ago";
+        return TWTR.i18n.get("over-a-year");
       }
 
     };
@@ -784,7 +783,7 @@ if (!Array.forEach) {
             <a target="_blank" href="http://twitter.com/' + tweet.user + '" class="twtr-user">' + tweet.user + '</a> ' + tweet.tweet + ' \
             <em>\
             <a target="_blank" class="twtr-timestamp" time="' + tweet.timestamp + '" href="http://twitter.com/' + tweet.user + '/status/' + tweet.id + '">' + tweet.created_at + '</a> &middot;\
-            <a target="_blank" class="twtr-reply" href="http://twitter.com/?status=@' + tweet.user + '%20&in_reply_to_status_id=' + tweet.id + '&in_reply_to=' + tweet.user + '">reply</a> \
+            <a target="_blank" class="twtr-reply" href="http://twitter.com/?status=@' + tweet.user + '%20&in_reply_to_status_id=' + tweet.id + '&in_reply_to=' + tweet.user + '">' + TWTR.i18n.get("reply") + '</a> \
             </em> ' + showPopular() + ' \
           </p> \
         </div> \
@@ -927,7 +926,7 @@ if (!Array.forEach) {
           this.setSearch(opts.search);
           this._setUrl();
           this.theme = opts.theme ? opts.theme : this._getDefaultTheme();
-
+          
           if (!opts.id) {
             document.write('<div class="twtr-widget" id="' + this.id + '"></div>');
           }
@@ -1268,7 +1267,8 @@ if (!Array.forEach) {
           * @return self
           */
         setFooterText: function(s) {
-          this.footerText = (is.def(s) && is.string(s)) ? s : 'Join the conversation';
+
+          this.footerText = (is.def(s) && is.string(s)) ? s : TWTR.i18n.get("join-the-conversation");
           if (this._rendered) {
             this.byClass('twtr-join-conv', 'a').innerHTML = this.footerText;
           }
@@ -2207,3 +2207,50 @@ if (!Array.forEach) {
     }();
   })();
 })(); // #end application closure
+
+TWTR.i18n = function(){
+  return {
+    /**
+      * @public
+      * @return null
+      * @param i18n an i18n associative array
+      */
+    "init" : function(i18n){
+      this.i18n = i18n || {
+          "join-the-conversation" : "Join the conversation"
+          , "reply" : "Reply"
+          , "months" : [
+            "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet"
+            , "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+          ]
+          , "right-now" : "right now"
+          , "x-seconds-ago" : "%s seconds ago"
+          , "about-1-minute-ago" : "about %s minute ago"
+          , "x-minutes-ago" : "%s minutes ago"
+          , "about-1-hour-ago" : "about %s hour ago"
+          , "x-hours-ago" : "%s hour ago"
+          , "yesterday" : "Yesterday"
+          , "x-days-ago" : "%s days ago"
+          , "over-a-year" : "Over a year"
+      };
+    }
+    /**
+      * @public
+      * @return string
+      * @param k the key in the i18n dict
+      * @param v the value that will replace the placeholder. reference: http://diveintopython.org/native_data_types/formatting_strings.html
+      */
+    , "get" : function(k,v){
+      if (this.i18n !== undefined) {
+        if (this.i18n[k] !== undefined && this.i18n[k]) {
+
+          if (v !== undefined) {
+            return this.i18n[k].replace("%s", v);
+          }
+
+          return this.i18n[k];
+        };  
+      }; 
+    }
+  }
+}();
