@@ -2236,18 +2236,18 @@ if (!Array.forEach) {
 TWTR.i18n = (function(){
   return {
     _i18n : {
-      "join-the-conversation" : "Join the conversation"
+	    "dir": "ltr"
       , "reply" : "Reply"
-      , "months" : [
-        "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet"
-        , "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+      , "months" : [ 
+        "January", "February", "March", "April", "May", "June", "July", 
+        "August", "September", "October", "November", "December" 
       ]
       , "right-now" : "right now"
       , "x-seconds-ago" : "%s seconds ago"
       , "about-1-minute-ago" : "about %s minute ago"
       , "x-minutes-ago" : "%s minutes ago"
       , "about-1-hour-ago" : "about %s hour ago"
-      , "x-hours-ago" : "%s hour ago"
+      , "x-hours-ago" : "%s hours ago"
       , "yesterday" : "Yesterday"
       , "x-days-ago" : "%s days ago"
       , "over-a-year" : "Over a year"
