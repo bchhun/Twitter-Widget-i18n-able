@@ -928,7 +928,7 @@ if (!Array.forEach) {
           this.theme = opts.theme ? opts.theme : this._getDefaultTheme();
           
           if (!opts.id) {
-            document.write('<div class="twtr-widget" id="' + this.id + '"></div>');
+            document.write('<div class="twtr-widget" id="' + this.id + '" dir="' + TWTR.i18n.get("dir") + '" lang="' + TWTR.i18n.get("lang") + '"></div>');
           }
           this.widgetEl = byId(this.id);
           if (opts.id) {
